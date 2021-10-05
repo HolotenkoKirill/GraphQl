@@ -18,25 +18,28 @@ const mockCompanyInfo = {
 };
 
 describe('LazyQuery', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     render(
       <MockedProvider mocks={[mockCompanyInfo]} addTypename={false}>
         <LazyQuery />
       </MockedProvider>
     );
+    const button = screen.getByText(/Get info about company/i);
+    userEvent.click(button);
   });
 
   test('should render name', async () => {
-    const button = screen.getByText(/Get info about company/i);
-    userEvent.click(button);
     const ceo = await screen.findByText(/elon/i);
     expect(ceo).toBeInTheDocument();
   });
 
   test('should render number of employees', async () => {
-    const button = screen.getByText(/Get info about company/i);
-    userEvent.click(button);
     const employees = await screen.findByText(/7000/i);
     expect(employees).toBeInTheDocument();
+  });
+
+  test('should render "Loading..."', async () => {
+    const loading = await screen.findByText(/Loading.../i);
+    expect(loading).toBeInTheDocument();
   });
 });

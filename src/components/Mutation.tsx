@@ -5,7 +5,7 @@ interface IUser {
   returning: { id: string; name: string }[];
 }
 
-const getCompanyInfo = gql`
+export const GET_COMPANY_INFO = gql`
   mutation AddUser($insertUsersObjects: [users_insert_input!]!) {
     insert_users(objects: $insertUsersObjects) {
       returning {
@@ -17,7 +17,7 @@ const getCompanyInfo = gql`
 `;
 
 const Mutation = (): JSX.Element => {
-  const [addUser, { data, loading }] = useMutation<{ insert_users: IUser }>(getCompanyInfo);
+  const [addUser, { data, loading }] = useMutation<{ insert_users: IUser }>(GET_COMPANY_INFO);
   return (
     <div>
       <button onClick={() => addUser({ variables: { insertUsersObjects: { name: 'Adam' } } })}>
@@ -26,7 +26,6 @@ const Mutation = (): JSX.Element => {
       {!loading ? (
         data && (
           <div>
-            {console.log(data.insert_users.returning[0])}
             <h3>{data.insert_users.returning[0].name}</h3>
             <p>{data.insert_users.returning[0].id}</p>
           </div>

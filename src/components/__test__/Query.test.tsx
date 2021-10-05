@@ -25,7 +25,7 @@ const mockDragonInfo = {
 };
 
 describe('Query', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     render(
       <MockedProvider mocks={[mockDragonInfo]} addTypename={false}>
         <Query />
@@ -46,5 +46,10 @@ describe('Query', () => {
   test('should render height', async () => {
     const height = await screen.findByText(/4/i);
     expect(height).toBeInTheDocument();
+  });
+
+  test('should render "Loading..."', () => {
+    const loading = screen.getByText(/Loading.../i);
+    expect(loading).toBeInTheDocument();
   });
 });

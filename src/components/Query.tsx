@@ -41,7 +41,6 @@ const Query = (): JSX.Element => {
           {data &&
             data.dragons.map((item, index) => (
               <div key={index}>
-                {console.log(item.name)}
                 <h1>{item.name}</h1>
                 <p>{item.description}</p>
                 <p>height of thunk{item.height_w_trunk.meters}</p>
