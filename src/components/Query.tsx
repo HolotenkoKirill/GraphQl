@@ -17,7 +17,7 @@ interface IDragonParam {
   limit: number;
 }
 
-const getDragonInfo = gql`
+export const GET_DRAGON_INFO = gql`
   query getDragonInfo($limit: Int) {
     dragons(limit: $limit) {
       name
@@ -30,7 +30,7 @@ const getDragonInfo = gql`
 `;
 
 const Query = (): JSX.Element => {
-  const { loading, data } = useQuery<IDragonData, IDragonParam>(getDragonInfo, {
+  const { loading, data } = useQuery<IDragonData, IDragonParam>(GET_DRAGON_INFO, {
     variables: { limit: 1 }
   });
 
