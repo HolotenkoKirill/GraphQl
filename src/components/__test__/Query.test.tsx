@@ -1,5 +1,5 @@
 import { MockedProvider } from '@apollo/client/testing';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Query, { GET_DRAGON_INFO } from '../Query';
 
 const mockDragonInfo = {
@@ -31,21 +31,20 @@ describe('Query', () => {
         <Query />
       </MockedProvider>
     );
-    await waitFor(() => new Promise((res) => setTimeout(res, 0)));
   });
 
-  test('should render name', () => {
-    const name = screen.getByRole('heading', { name: 'Dragon 2' });
+  test('should render name', async () => {
+    const name = await screen.findByRole('heading', { name: 'Dragon 2' });
     expect(name).toBeInTheDocument();
   });
 
-  test('should render description', () => {
-    const description = screen.getByText(/some description/i);
+  test('should render description', async () => {
+    const description = await screen.findByText(/some description/i);
     expect(description).toBeInTheDocument();
   });
 
-  test('should render height', () => {
-    const height = screen.getByText(/4/i);
+  test('should render height', async () => {
+    const height = await screen.findByText(/4/i);
     expect(height).toBeInTheDocument();
   });
 });

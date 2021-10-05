@@ -8,7 +8,7 @@ interface ICompanyInfo {
   };
 }
 
-const getCompanyInfo = gql`
+export const GET_COMPANY_INFO = gql`
   query ExampleQuery {
     company {
       ceo
@@ -18,7 +18,7 @@ const getCompanyInfo = gql`
 `;
 
 const LazyQuery = (): JSX.Element => {
-  const [getInfo, { loading, data }] = useLazyQuery<ICompanyInfo>(getCompanyInfo);
+  const [getInfo, { loading, data }] = useLazyQuery<ICompanyInfo>(GET_COMPANY_INFO);
   return (
     <div>
       <button onClick={() => getInfo()}>Get info about company</button>
