@@ -33,22 +33,22 @@ describe('Query', () => {
     );
   });
 
-  test('should render name', async () => {
+  it('renders name', async () => {
     const name = await screen.findByRole('heading', { name: 'Dragon 2' });
     expect(name).toBeInTheDocument();
   });
 
-  test('should render description', async () => {
+  it('renders description', async () => {
     const description = await screen.findByText(/some description/i);
     expect(description).toBeInTheDocument();
   });
 
-  test('should render height', async () => {
+  it('renders height', async () => {
     const height = await screen.findByText(/4/i);
     expect(height).toBeInTheDocument();
   });
 
-  test('should render "Loading..."', () => {
+  it('renders "Loading..."', () => {
     const loading = screen.getByText(/Loading.../i);
     expect(loading).toBeInTheDocument();
   });

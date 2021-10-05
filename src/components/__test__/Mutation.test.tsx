@@ -33,12 +33,12 @@ describe('Mutation', () => {
     userEvent.click(button);
   });
 
-  test('should render Adam', async () => {
+  it('renders Adam', async () => {
     const name = await screen.findByText(/Adam/i);
     expect(name).toBeInTheDocument();
   });
 
-  test('should render id', async () => {
+  it('renders id', async () => {
     const id = await screen.findByText(/7fa5378d-9632-4364-b3be-7c642400a88e/i);
     expect(id).toBeInTheDocument();
   });

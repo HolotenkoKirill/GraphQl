@@ -28,17 +28,17 @@ describe('LazyQuery', () => {
     userEvent.click(button);
   });
 
-  test('should render name', async () => {
+  it('renders name', async () => {
     const ceo = await screen.findByText(/elon/i);
     expect(ceo).toBeInTheDocument();
   });
 
-  test('should render number of employees', async () => {
+  it('renders number of employees', async () => {
     const employees = await screen.findByText(/7000/i);
     expect(employees).toBeInTheDocument();
   });
 
-  test('should render "Loading..."', async () => {
+  it('renders "Loading..."', async () => {
     const loading = await screen.findByText(/Loading.../i);
     expect(loading).toBeInTheDocument();
   });
